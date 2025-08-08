@@ -3,6 +3,20 @@
 
 using namespace std;
 
+void conditionals() {
+
+    int x {8};
+    int y {9};
+
+    if (x - y == -1) {
+
+        cout << format("x minus y is -1\n");
+    }
+
+    int new_val = (x < y) ? 0 : x;
+    cout << format("New value is {}\n", new_val);
+}
+
 void pointers() {
 
     int x {7};
@@ -41,5 +55,6 @@ int main() {
     statement();
     definingVariables();
     pointers();
+    conditionals();
 }
 

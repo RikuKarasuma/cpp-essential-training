@@ -3,6 +3,46 @@
 
 using namespace std;
 
+
+void forloops() {
+
+    int array[] { 2, 3, 4, 5, 6};
+
+    // C for loop
+    for (int i {0}; i < 5; i++) {
+        cout << format("element {} is {}\n", i, array[i]);
+    }
+
+    // take advantage of the null terminator
+    const char string[] {"How now brown cow."};
+
+    for (int i {0}; string[i]; i ++) {
+        cout << format("char at {} is {}\n", i, string[i]);
+    }
+
+    // pointer loop with dereferencing
+    for (auto* p = string; *p; p++) {
+        cout << format("char is {}\n", *p);
+    }
+
+    // range for loop C++
+    for (const int& e : array) {
+        cout << format("element is {}\n", e);
+    }
+}
+
+
+void loops() {
+
+    int array[] { 2, 3, 4, 5, 6};
+    int i {0};
+
+    while (i < 5) {
+        cout << format("element {} is {}\n", i, array[i]);
+        ++i;
+    }
+}
+
 void conditionals() {
 
     int x {8};
@@ -56,5 +96,7 @@ int main() {
     definingVariables();
     pointers();
     conditionals();
+    loops();
+    forloops();
 }
 

@@ -6,6 +6,30 @@
 
 using namespace std;
 
+// Also known as primitive array.
+void cArray() {
+
+    // Fixed sized container.
+    // Zero indexed.
+    int ia[5] {1, 2, 3, 4, 5};
+
+    ia[0] = 1;
+
+    // May also be assigned via pointer.
+    // May also be access as if a pointer.
+    // When incrementing a pointer, it increments the pointers
+    // index, not the actual value.
+    *ia = 2;
+
+    int *pointer = ia;
+    pointer++;
+
+    for (const int& i : ia) {
+        cout << format("{}", i);
+    }
+    cout << endl;
+ }
+
 /**
  * Another way of using alias is 
  * using points_t = uint32_t
@@ -276,5 +300,6 @@ int main() {
     autoTypes();
     qualifiers();
     typeAlias();
+    cArray();
 }
 

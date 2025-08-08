@@ -1,17 +1,39 @@
 #include <iostream>
 #include <format>
 #include <vector>
+#include <cstdint>
 
 
 using namespace std;
 
+/**
+ * Another way of using alias is 
+ * using points_t = uint32_t
+ * using rank_t = uint64_t;
+ */
+typedef uint32_t points_t;
+typedef uint64_t rank_t;
+
+struct score {
+
+    points_t p {};
+    rank_t r {};
+};
+
+void typeAlias() {
+
+    // Alias are used to alias another type.
+    const score s {5, 1};
+
+    cout << format("Score s had {} points and a rank of {}\n", s.p, s.r);
+}
 
 void qualifiers() {
 
     // Immutable, static storage
     const static int i {42};
 
-    /** 
+    /**
      * Two types of qualifiers in C++
      *
      * CV Qualifiers (Constant & Volatile)
@@ -253,5 +275,6 @@ int main() {
     floatingPointTypes();
     autoTypes();
     qualifiers();
+    typeAlias();
 }
 

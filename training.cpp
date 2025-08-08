@@ -3,6 +3,42 @@
 
 using namespace std;
 
+void integertypes() {
+
+    // Minimum size to contain a character.
+    // On most systems it's 8 bits.
+    // It may be signed or unsigned.
+    char a = 'a';
+
+    cout << format("The value of the char is {}\n", static_cast<int>(a));
+
+    // Smallest integer type.
+    // Usually 16 bits, depending on the processor arch.
+    short b = 16000;
+
+    cout << format("The value of the char is {}\n", b);
+
+    // Natural size of an integer.
+    // On most systems it is 32 bits.
+    int c = 100000;
+
+    cout << format("The value of the char is {}\n", c);
+
+    // At least the size of an int.
+    // Often double the size of an int.
+    // On most systems it's either 32 or 64 bits.
+    long d = 1000000000;
+
+    cout << format("The value of the char is {}\n", d);
+
+    // At least the size of a long int.
+    // It may be double the size of a long int.
+    // On most systems it's either 32 or 64 bits.
+    long long e = 10000000000000;
+
+    cout << format("The value of the char is {}\n", e);
+}
+
 
 void datatypes() {
 
@@ -128,5 +164,6 @@ int main() {
     loops();
     forloops();
     datatypes();
+    integertypes();
 }
 

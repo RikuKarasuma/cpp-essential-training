@@ -1,7 +1,29 @@
 #include <iostream>
 #include <format>
+#include <vector>
+
 
 using namespace std;
+
+void autoTypes() {
+
+    std::string s {"This is a string"};
+    auto x = s;
+
+    cout << format("The value of x is {}\n", x);
+    cout << format("The type of x is {}\n", typeid(x).name());
+
+    // auto is very strongly typed and can't be uninitalized.
+    // Can't type narrow using {}, must be initialized using =.
+
+    std::vector<int> int_vector { 5, 4, 3, 2, 1};
+
+    for (std::vector<int>::iterator it = int_vector.begin(); it != int_vector.end(); it ++) {
+
+        cout << format("int is {}\n", *it);
+        cout << format("type of it is {}\n", typeid(it).name());
+    }
+}
 
 void floatingPointTypes() {
 
@@ -193,5 +215,6 @@ int main() {
     dataTypes();
     integerTypes();
     floatingPointTypes();
+    autoTypes();
 }
 

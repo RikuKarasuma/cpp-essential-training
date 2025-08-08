@@ -6,6 +6,35 @@
 
 using namespace std;
 
+void structureType() {
+
+    // Aggregate of variables
+
+    struct S {
+        int i {};
+        double d {};
+        const char * s {};
+    };
+
+    S s1 { 3, 4.54, "string one"};
+    cout << format("s1: {}, {}, {}\n", s1.i, s1.d, s1.s);
+}
+
+void primitiveString() {
+
+    const char s[] {"String"};
+    cout << format("{}\n", s);
+
+    // Essentially the same as the above in the background.
+    const char null_terminated_s[] {'S', 't', 'r', 'i', 'n', 'g', 0};
+    cout << format("{}\n", null_terminated_s);
+
+    for (const char* p = s; *p; p++) {
+
+        cout << format("{}\n", *p);
+    }
+}
+
 // Also known as primitive array.
 void cArray() {
 
@@ -301,5 +330,7 @@ int main() {
     qualifiers();
     typeAlias();
     cArray();
+    primitiveString();
+    structureType();
 }
 

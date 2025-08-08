@@ -5,6 +5,42 @@
 
 using namespace std;
 
+
+void qualifiers() {
+
+    // Immutable, static storage
+    const static int i {42};
+
+    /** 
+     * Two types of qualifiers in C++
+     *
+     * CV Qualifiers (Constant & Volatile)
+     * 
+     * const -- Immutable.
+     * 
+     * mutable -- Makes mutable from a const qualified member function.
+     * (deprecated)
+     * 
+     * volatile -- Marks a variable that may be changed by another process. 
+     *
+     * Stoage Duration (Duration or Lifetime of a variable)
+     * 
+     * Defaultly most variables within a block use automatic lifetime, living until
+     * the end of the block.
+     *
+     * static -- Live for the duration of the program, automatic lifetime ignored. 
+     * Stored in static memory space, i.e not heap memory.
+     * By default a variable defined outside a block is static.
+     * 
+     * register -- Variables that live on the processor register, this can make 
+     * them faster and easier to access. Take as a suggestion by the compiler.
+     * The compiler may or may not store the variable in a register.
+     * 
+     * extern -- Defined in a separate translation unit and linked in the linker
+     * step. 
+    */
+}
+
 void autoTypes() {
 
     std::string s {"This is a string"};
@@ -216,5 +252,6 @@ int main() {
     integerTypes();
     floatingPointTypes();
     autoTypes();
+    qualifiers();
 }
 

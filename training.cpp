@@ -3,7 +3,34 @@
 
 using namespace std;
 
-void integertypes() {
+void floatingPointTypes() {
+
+    const size_t byte {8};
+
+    // Precision to 7 digits.
+    // On most systems 32 bits.
+    float f {};
+
+    // Precision to 16 digits.
+    // On most systems 64 bits.
+    double df {};
+
+    // May be the same as a double or a IEEE long double
+    // May be 64, 80 or 128 bits depending on arch.
+    long double ldf {};
+
+    cout << format("The size of the float f is {}\n", sizeof(f) * byte);
+    cout << format("The size of the dpuble df is {}\n", sizeof(df) * byte);
+    cout << format("The size of the long double ldf is {}\n", sizeof(ldf) * byte);
+
+    // Scale is how large or small a number can be.
+    // Precision is accuracy of the representation to the number of digits. 
+    // i.e potential rounding errors.
+    // Never use floating types for accounting. Always default to integers or 
+    // integer based encapsulations.
+}
+
+void integerTypes() {
 
     // Minimum size to contain a character.
     // On most systems it's 8 bits.
@@ -40,7 +67,7 @@ void integertypes() {
 }
 
 
-void datatypes() {
+void dataTypes() {
 
     int signed_type = -23423;
     unsigned int unsigned_type = 3243243289;
@@ -69,7 +96,7 @@ void datatypes() {
 }
 
 
-void forloops() {
+void forLoops() {
 
     int array[] { 2, 3, 4, 5, 6};
 
@@ -162,8 +189,9 @@ int main() {
     pointers();
     conditionals();
     loops();
-    forloops();
-    datatypes();
-    integertypes();
+    forLoops();
+    dataTypes();
+    integerTypes();
+    floatingPointTypes();
 }
 

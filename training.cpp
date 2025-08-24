@@ -3,8 +3,103 @@
 #include <vector>
 #include <cstdint>
 
-
 using namespace std;
+
+unsigned long factorialWithoutRecursion(unsigned long n) {
+
+    unsigned long factorial = n;
+    while (n > 1) {
+        factorial *= --n;
+    }
+
+    return factorial;
+}
+
+unsigned long factorial(unsigned long n) {
+    if (n < 2) return 1;
+    return n * factorial(n - 1);
+}
+
+void funcWithDefault(int a = 5) {
+    cout << format("a is {}\n", a);
+}
+
+bool isPrime(short num) {
+
+    if (num < 2) {
+        return false;
+    }
+    if (num <= 3) {
+        return true;
+    }
+    if (num % 2 == 0 || num % 3 == 0) {
+        return false;
+    }
+
+    short diviser = 5;
+    while (diviser * diviser <= num) {
+        if (num % diviser == 0 || num % (diviser + 2) == 0) {
+            return false;
+        }
+        diviser = diviser + 6;
+    }
+
+    return true;
+}
+
+void findPrimeNumbers() {
+    // Natural number
+    // Greater than 1
+    // Not a product of two smaller natural numbers.
+
+    const short limit = 31000;
+
+    for ( int i = 2; i < limit; i++) {
+
+        if (isPrime(i)) {
+            cout << format("Number is a prime! {}\n", i);
+        }
+    }
+
+}
+
+void incrementAndDecrementOperators() {
+
+    auto x = 5;
+    cout << format("Foo BAAR! {}\n", ++x);
+    cout << format("Foo BAAR! {}\n", --x);
+    cout << format("Foo BAAR! {}\n", ++x);
+    cout << format("Foo BAAR! {}\n", x--);
+    cout << format("Foo BAAR! {}\n", x++);
+    cout << format("Foo BAAR! {}\n", x++);
+}
+
+void compoundAssignmentOperators() {
+
+    auto x = 5;
+    auto y = 47;
+    cout << format("x is {}\n", x);
+    cout << format("y is {}\n", y);
+
+    x *= y;
+    cout << format("x is {}\n", x);
+}
+
+void commonOperators() {
+
+    auto assignment = 5;
+
+    auto addition = assignment + 2;
+    auto subtraction = assignment - 2;
+    auto modulo = assignment % 2;
+
+    if (assignment != modulo) {
+        cout << format("Not equal\n");
+    }
+
+
+    cout << format("Size of addition {} bits\n", sizeof(addition) * 8);
+}
 
 void structureType() {
 
@@ -332,5 +427,12 @@ int main() {
     cArray();
     primitiveString();
     structureType();
+    commonOperators();
+    compoundAssignmentOperators();
+    incrementAndDecrementOperators();
+    findPrimeNumbers();
+    funcWithDefault();
+    cout << format("Initial factorial 5: {}\n", factorial(5));
+    cout << format("W/ recursion factorial 5: {}\n", factorialWithoutRecursion(5));
 }
 

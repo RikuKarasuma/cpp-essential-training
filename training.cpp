@@ -2,8 +2,63 @@
 #include <format>
 #include <vector>
 #include <cstdint>
+#include <string>
 
 using namespace std;
+
+const string UNKNOWN {"Unknown"};
+const string CLONE_PREFIX {"Clone-"};
+
+class Animal {
+    string type {};
+    string name {};
+    string sound {};
+    public:
+        Animal();
+        Animal(const string& type, const string& name, const string& sound);
+        Animal(const Animal&); // copy constructor.
+        ~Animal(); // destructor.
+        Animal& operator = (const Animal&); // copy by assignment operator.
+        void print() const;
+};
+
+Animal::Animal() : type(UNKNOWN), name(UNKNOWN), sound(UNKNOWN) {
+    cout << "Default constructor\n";
+}
+
+Animal::Animal(const string& type, const string& name, const string& sound) 
+    : type(type), name(name), sound(sound) {
+
+    cout << "Constructor with args\n";
+}
+
+
+Animal::Animal(const Animal& copy) {
+
+    cout << "Copy constructor\n";
+    name = CLONE_PREFIX + copy.name;
+    type = copy.type;
+    sound = copy.sound;
+
+}
+Animal::~Animal() {
+    cout << format("Destructor: {} the {}\n", name, type);
+}
+
+Animal& Animal::operator= (const Animal& copy) {
+    cout << "Assignment operator\n";
+    if (this != &copy) {
+        name = copy.name;
+        type = copy.type;
+        sound = copy.sound;
+    }
+
+    return *this;
+}
+
+void Animal::print() const {
+    cout << format("{} the {} says {}\n", name, type, sound);
+}
 
 unsigned long factorialWithoutRecursion(unsigned long n) {
 
@@ -434,5 +489,16 @@ int main() {
     funcWithDefault();
     cout << format("Initial factorial 5: {}\n", factorial(5));
     cout << format("W/ recursion factorial 5: {}\n", factorialWithoutRecursion(5));
+    Animal unknown {};
+    unknown.print();
+
+    const Animal monkey {"primate", "steve", "ooo"};
+    monkey.print();
+
+    const Animal cloned_monkey = monkey;
+    cloned_monkey.print();
+
+    unknown = cloned_monkey;
+    unknown.print();
 }
 

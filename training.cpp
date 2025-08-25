@@ -3,11 +3,29 @@
 #include <vector>
 #include <cstdint>
 #include <string>
+#include <string_view>
 
 using namespace std;
 
 const string UNKNOWN {"Unknown"};
 const string CLONE_PREFIX {"Clone-"};
+
+// Since C++ is strongly typed.
+// The Compiler generates each specialisation type at compile time
+// for templates.
+
+// Print without cout
+template<typename... Args>
+static void out(const string_view strFormat, Args&&... args) {
+    fputs(vformat(strFormat, make_format_args(args...)).c_str(), stdout);
+}
+
+
+// Template function
+template <typename T>
+T maxof(T a, T b) {
+    return a > b ? a : b;
+}
 
 class Animal {
     string type {};
@@ -500,5 +518,7 @@ int main() {
 
     unknown = cloned_monkey;
     unknown.print();
+    cout << format("Max of 32 and 64 is {}\n", maxof(32, 64));
+    out("This is a test print {}\n", factorial(5));
 }
 
